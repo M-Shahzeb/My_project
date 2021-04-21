@@ -9,7 +9,7 @@ const { AwsInstance } = require('twilio/lib/rest/accounts/v1/credential/aws');
 }
 
 // getting postman data in userRecord and return calculated data in result
-Number_verification.register =  async function(userData, result)
+Number_verification.register =   function(userData, result)
 {
    const {country_code,phone,code}=  userData;
     const phone_no=`${country_code}${phone}`;

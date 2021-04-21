@@ -19,7 +19,7 @@ var imageUpload = multer.diskStorage({
 var images = multer({ storage: imageUpload });
 // router.post('/upload',images.single('file'),userprofile.upload);
 
-router.post('/createprofile',images.single('file'),  userprofile.createprofile);
+router.put('/createprofile/:id',images.single('file'),  userprofile.createprofile);
 
 
 

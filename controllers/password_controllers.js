@@ -14,11 +14,11 @@ exports.password= function(req,res){
 
   var data = req.body;
   var pass = data.password;
-  
+  var id= req.params.id;
 var pattern = /^(?=.*[0-9a-zA-Z])(?=.*[~`!@#$%&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
 var ress = pass.match( pattern );
       
-  if(!data.id || !pass || !ress ){
+  if( !pass || !ress ){
     
     res.status(400).send({status:400, success:false, message: "Please Enter a Valid Password" });
   
@@ -30,7 +30,7 @@ var ress = pass.match( pattern );
   data.password = passw;
   console.log(data);
 
-password.password(data,function(err,result){
+password.password(data,id,function(err,result){
     if(err){
         res.status(400).json({success:false, status:400, message:"result.message", data:err });
     }

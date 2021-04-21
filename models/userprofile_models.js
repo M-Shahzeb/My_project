@@ -6,23 +6,23 @@
  
  }
 
- Signup.createprofile = function(picture, userRecord, result){
+ Signup.createprofile = function(picture, userRecord,id, result){
 
 	 console.log("userRecord is working",userRecord);
 	//  sql.query("SELECT * FROM `user` WHERE  `phone` = ?",  userRecord.phone, function(err,res){
-	 sql.query("SELECT * FROM `user` WHERE  `id` = ?  ",  [userRecord.id], function(err,res){
+	 sql.query("SELECT * FROM `user` WHERE  `id` = ?  ",  [id], function(err,res){
     // check on email exist in DB or not
 	
  if(res != ''){   
 
-    sql.query("UPDATE `user` SET `pic`=? ,`username`=?, `about`=?, `weight`=?, `age`=?, `height`=? WHERE id=?", [picture.file,userRecord.username,userRecord.about,userRecord.weight,userRecord.age,userRecord.height,userRecord.id], function(err,res){
+    sql.query("UPDATE `user` SET `pic`=? ,`username`=?, `about`=?, `weight`=?, `age`=?, `height`=? WHERE id=?", [picture.file,userRecord.username,userRecord.about,userRecord.weight,userRecord.age,userRecord.height,id], function(err,res){
         if(err){
             result(err,null);
         }
         else
         {
             var userid = res.insertId;
-            userRecord.id= userid;
+            userRecord.id = userid;
             result(null, { message:"Profile Created Succesfully", data:userRecord});
         }
     });

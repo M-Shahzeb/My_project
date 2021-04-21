@@ -5,7 +5,8 @@ const auth = require('../models/nickname_models.js');
 
 exports.uploadNickName = function(req,res){
     const userdata= req.body;
-    auth.uploadNickName(userdata, function(err,result){
+    const id = req.params.id;
+    auth.uploadNickName(userdata,id, function(err,result){
     if(err){
       res.status(400).send({success:false, status:400, message:"Record Not  Found", data:err });
     }

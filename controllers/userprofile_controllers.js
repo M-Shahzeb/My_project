@@ -8,7 +8,7 @@ exports.signup = function(req,res){
 };
 
 exports.createprofile= function(req,res){
-
+const id =req.params.id;
 var data= req.body;
 var img = req.file;
 var splitextension  = req.file.filename.split(".");
@@ -22,7 +22,7 @@ var splitextension  = req.file.filename.split(".");
   };
 
 console.log(data);
-if(!data.username || !data.about || !data.age || !data.weight || !data.height  ){
+if(!id ||!data.username || !data.about || !data.age || !data.weight || !data.height  ){
   res.status(400).send({status:400, success:false, message: 'Please provide complete fields' });
 }
 if(!img){
@@ -30,7 +30,7 @@ if(!img){
 }
 console.log(data);
 
-userprofile.createprofile(fileUploadData,data,function(err,result){
+userprofile.createprofile(fileUploadData,data,id,function(err,result){
     if(err){
         res.status(400).json({success:false, status:400, message:"result.message", data:err });
     }

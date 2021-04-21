@@ -3,7 +3,7 @@ const router = express.Router();
 const password = require('../controllers/password_controllers');
 const {checkToken} = require('../util/validation_token');
 
-router.post('/password',  password.password);
+router.put('/password/:id',  password.password);
 // router.post('/userprofile',  userprofile.userprofile);
 
 

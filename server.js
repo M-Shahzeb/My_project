@@ -34,7 +34,6 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.get('/', (req, res) => {
   res.send("Welcome To Home Stead Application");
 });
-
 const auth = require('./routes/auth_routes');
 const userList = require('./routes/userListing_routes');
 const showNumber = require('./routes/shownumber_routes');
@@ -42,6 +41,7 @@ const NickName = require('./routes/nickname_routes');
 const userprofile = require('./routes/userprofile_routes');
 const picture = require('./routes/picture_routes');
 const password = require('./routes/password_routes');
+
 
 app.use('/api/auth', auth);
 app.use('/api/userList', userList);

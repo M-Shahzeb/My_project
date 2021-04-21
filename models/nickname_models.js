@@ -6,8 +6,8 @@ var Signup = function(user){
 }
 
 
-Signup.uploadNickName = function(userRecord, result){
-    sql.query("SELECT * FROM user WHERE `id` = ? ",  [userRecord.id], function(err,res){
+Signup.uploadNickName = function(userRecord,id, result){
+    sql.query("SELECT * FROM user WHERE `id` = ? ",  [id], function(err,res){
         if(err)
         {
         result(err,null);
@@ -16,7 +16,7 @@ Signup.uploadNickName = function(userRecord, result){
         {
         if(res != '')
         {
-            sql.query("SELECT `nickname` FROM `user` WHERE  `id`=? ",  [userRecord.id], function(err,res){
+            sql.query("SELECT `nickname` FROM `user` WHERE  `id`=? ",  [id], function(err,res){
    
                 //    console.log(res[0].nickname);
                    
@@ -28,7 +28,7 @@ Signup.uploadNickName = function(userRecord, result){
                 else{
                 
                     console.log("nick name inserting!");
-                    sql.query("UPDATE `user` SET `nickname`=? WHERE `id`= ?", [userRecord.nickname, userRecord.id], function(err,res){
+                    sql.query("UPDATE `user` SET `nickname`=? WHERE `id`= ?", [userRecord.nickname, id], function(err,res){
                     if(err){
                         result(err,null);
                             }
